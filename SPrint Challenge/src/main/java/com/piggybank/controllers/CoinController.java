@@ -69,17 +69,16 @@ public class CoinController
             return new ResponseEntity<>("Money not available", HttpStatus.OK);
         }else
         {
-            if(amount > 1)
+            for(Coin c:myList)
             {
-                for(Coin c: myList)
+                if(c.getQuantity()*c.getValue() <= newAmt)
                 {
-                    if(c.getName()=="Dollar")
-                    {
-                        if(c.getQuantity()*c.getValue() < amount)
-                        {
-                            newAmt -
-                        }
-                    }
+                    newAmt -= c.getValue()*c.getQuantity();
+                    c.setQuantity(0);
+                }else if(c.getValue() < newAmt && c.getQuantity()>0)
+                {
+                    newAmt -= c.getValue();
+                    c.setQuantity(c.getQuantity()-1);
                 }
             }
         }
