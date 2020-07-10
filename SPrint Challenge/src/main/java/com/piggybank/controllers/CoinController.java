@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -49,6 +50,47 @@ public class CoinController
         }
         System.out.println("The piggy bank  holds " + total);
         return new ResponseEntity<>(total, HttpStatus.OK);
+    }
+
+    @GetMapping(value ="/money/{amount}", produces = {"application/json"})
+    public ResponseEntity<?> reduceAmount(@PathVariable double amount)
+    {
+        List<Coin> myList = new ArrayList<>();
+        coinRepos.findAll().iterator().forEachRemaining(myList::add);
+        double newAmt =amount;
+        double total=0;
+        for(Coin c: myList)
+        {
+            total += c.getQuantity()*c.getValue();
+        }
+        if(amount > total)
+        {
+            System.out.println("Money not available");
+            return new ResponseEntity<>("Money not available", HttpStatus.OK);
+        }else
+        {
+            if(amount > 1)
+            {
+                for(Coin c: myList)
+                {
+                    if(c.getName()=="Dollar")
+                    {
+                        if(c.getQuantity()*c.getValue() < amount)
+                        {
+                            newAmt -
+                        }
+                    }
+                }
+            }
+        }
+
+        total=0;
+        for(Coin c: myList)
+        {
+            total += c.getQuantity()*c.getValue();
+        }
+
+        return new ResponseEntity<>(myList + "New Total" + total, HttpStatus.OK);
     }
 
 }

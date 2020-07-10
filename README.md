@@ -23,9 +23,20 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain how you took advantage of Java's Object Oriented approach to solve the sprint challenge.
+
+by using the Coin class, i could easily set up an list of each entry in the bank. then each entry had getters and setters made for easy calculations
+
 2. Explain the three steps needed to run a Java application (using the JDK) including what each step does and how those step correlate to running a JavaScript application.
+
+first must compile, then create a jar file, then run it using java. compiling creates class files out of the java files, a jar file is the file that holds all the required files and knows where each one is to be used. then using java to run it
+
 3. Explain how Java being a strongly typed language affected you solution.
+
+you must be very careful about typing of each individual element. you have to properly syntax your math
+
 4. Can you explain the differences between Abstract Classes and Interfaces including how they are used in your application?
+
+each are similar in that they are used to create more classes, but abstract classes are "parent" level classes to pass down a hierarchy of methods and fields to subclasses, while interfaces are just the header to subclasses
 
 ## Instructions
 
