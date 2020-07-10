@@ -1,7 +1,7 @@
-package com.piggybank.piggybank.controllers;
+package com.piggybank.controllers;
 
-import com.piggybank.piggybank.models.Coin;
-import com.piggybank.piggybank.repositories.CoinRepository;
+import com.piggybank.models.Coin;
+import com.piggybank.repositories.CoinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +38,16 @@ public class CoinController
         double total=0;
         for(Coin c:myList)
         {
-//            System.out.println(c);
-            total += c.getValue();
+            if(c.getQuantity()>1)
+            {
+                System.out.println(c.getQuantity() + " " + c.getNameplural());
+            }else
+            {
+                System.out.println(c.getQuantity() + " " + c.getName());
+            }
+            total += c.getValue()*c.getQuantity();
         }
+        System.out.println("The piggy bank  holds " + total);
         return new ResponseEntity<>(total, HttpStatus.OK);
     }
 

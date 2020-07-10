@@ -1,4 +1,4 @@
-package com.piggybank.piggybank.models;
+package com.piggybank.models;
 
 import javax.persistence.*;
 
